@@ -5,14 +5,14 @@
  */
 
 //******************************************
-//flex²¼¾Ö
-//·ÖÈı¸ö°æ±¾£º
-//¾É°æ±¾:IEºÍopera¶¼²»Ö§³Ö£¬Ã»ÓĞ±ØÒªĞ´Ç°×º£¨old£©
-//»ìºÏ°æ±¾£ºÒ»Ö±ÒÔÀ´Ö»ÓĞIE10²ÅÖ§³Ö(hybird)
-//ĞÂ°æ±¾£ºiso6ÏÂsafariä¯ÀÀÆ÷²»Ö§³Ö(new)
+//flexå¸ƒå±€
+//åˆ†ä¸‰ä¸ªç‰ˆæœ¬ï¼š
+//æ—§ç‰ˆæœ¬:IEå’Œoperaéƒ½ä¸æ”¯æŒï¼Œæ²¡æœ‰å¿…è¦å†™å‰ç¼€ï¼ˆoldï¼‰
+//æ··åˆç‰ˆæœ¬ï¼šä¸€ç›´ä»¥æ¥åªæœ‰IE10æ‰æ”¯æŒ(hybird)
+//æ–°ç‰ˆæœ¬ï¼šiso6ä¸‹safariæµè§ˆå™¨ä¸æ”¯æŒ(new)
 //******************************************
 /**
- * flexºĞ×Ó
+ * flexç›’å­
  */
  %flexDisplay{
   display:-moz-box;
@@ -24,11 +24,11 @@
   display:flex;
 }
 /**
- * ÉìËõÁ÷·½Ïò
+ * ä¼¸ç¼©æµæ–¹å‘
  * @param: row | row-reverse | column | column-reverse
  */
 @mixin flexDirectionForOld($direction){
-  @if $direction == row { //old°æ±¾»¹ÓĞ inline-axis | block-axis£¬Ôİ²»¿¼ÂÇ
+  @if $direction == row { //oldç‰ˆæœ¬è¿˜æœ‰ inline-axis | block-axisï¼Œæš‚ä¸è€ƒè™‘
     -webkit-box-orient:horizontal ;
     -moz-box-orient:horizontal ;
     box-orient:horizontal;
@@ -60,11 +60,11 @@
 
 }
 /**
- * Ëõ»»ĞĞ
+ * ç¼©æ¢è¡Œ
  * @param: nowrap | wrap | wrap-reverse
  */
 @mixin flexWrapForOld($param){
-  @if $param == nowrap { //box-linesºÃÏñÃ»ÓĞä¯ÀÀÆ÷Ö§³Ö
+  @if $param == nowrap { //box-lineså¥½åƒæ²¡æœ‰æµè§ˆå™¨æ”¯æŒ
     -moz-box-lines: single;
     -webkit-box-lines: single;
     box-lines: single;
@@ -73,8 +73,8 @@
     -webkit-box-lines: multiple;
     box-lines: multiple;
   } @else{
-    //box-linesÃ»ÓĞwrap-reverseµÄ¶ÔÓ¦Ïî
-    //TODO£º¾É°æ±¾¿ÉÒÔÍ¨¹ı²àÖáµÄendÊµÏÖ£¬Òª²»Òª¼ÓÉÏ£¬²¹³äÔÚÕâÀïÄØ£¿£¿£¿
+    //box-linesæ²¡æœ‰wrap-reverseçš„å¯¹åº”é¡¹
+    //TODOï¼šæ—§ç‰ˆæœ¬å¯ä»¥é€šè¿‡ä¾§è½´çš„endå®ç°ï¼Œè¦ä¸è¦åŠ ä¸Šï¼Œè¡¥å……åœ¨è¿™é‡Œå‘¢ï¼Ÿï¼Ÿï¼Ÿ
   }
 }
 @mixin flexWrap($param){
@@ -84,20 +84,20 @@
   flex-wrap:$param;
 }
 /**
- * ÉìËõÁ÷·½ÏòÓë»»ĞĞ£¬»ìºÏ°æ±¾ĞÂÔöµÄ£¬old°æ±¾Ä¾ÓĞ
- * @param: <row | row-reverse | column | column-reverse> ¡¢<nowrap | wrap | wrap-reverse>
+ * ä¼¸ç¼©æµæ–¹å‘ä¸æ¢è¡Œï¼Œæ··åˆç‰ˆæœ¬æ–°å¢çš„ï¼Œoldç‰ˆæœ¬æœ¨æœ‰
+ * @param: <row | row-reverse | column | column-reverse> ã€<nowrap | wrap | wrap-reverse>
  */
 @mixin flexFlow($paramA,$paramB){
   -ms-flex-flow: $paramA,$paramB;
   flex-flow: $paramA,$paramB;
   -moz-flex-flow: $paramA,$paramB;
-  //ÀÏ°æ±¾½øĞĞ×éºÏ
+  //è€ç‰ˆæœ¬è¿›è¡Œç»„åˆ
   @include flexDirectionForOld($paramA);
   @include flexWrapForOld($paramB);
 }
 
 /**
- * Ö÷Öá¶ÔÆë
+ * ä¸»è½´å¯¹é½
  * @param flex-start | flex-end | center | space-between | space-around
  */
 @mixin flexJustifyContentForOldAndHybird($param){
@@ -119,7 +119,7 @@
     box-pack: center;
     -ms-flex-pack:center;
     flex-pack: center;
-  }@else{ //ÀÏ°æ±¾Ã»ÓĞspace-aroundĞ§¹û£¬»ìºÏ°æ±¾Ã»ÓĞspace-betweenĞ§¹û£¬Ïà»¥Ìæ´ú
+  }@else{ //è€ç‰ˆæœ¬æ²¡æœ‰space-aroundæ•ˆæœï¼Œæ··åˆç‰ˆæœ¬æ²¡æœ‰space-betweenæ•ˆæœï¼Œç›¸äº’æ›¿ä»£
     -webkit-box-pack: justify;
     -moz-box-pack: justify;
     box-pack: justify;
@@ -134,7 +134,7 @@
 }
 
 /**
- * ²àÖá¶ÔÆë
+ * ä¾§è½´å¯¹é½
  * @param flex-start | flex-end | center | baseline | stretch
  */
 @mixin flexAlignItemsForOldAndHybird($param){
@@ -150,7 +150,7 @@
     box-align: end;
     -ms-flex-align:end;
     flex-align:end;
-  }@else{//µ±box-orientÖµÎªvertical£¬ox-alignÈ¡baselineÊ±£¬webkitÄÚºËÒÔcenter·½Ê½ÏÔÊ¾£¬firefoxÈ´ÒÔstart·½Ê½ÏÔÊ¾
+  }@else{//å½“box-orientå€¼ä¸ºverticalï¼Œox-alignå–baselineæ—¶ï¼Œwebkitå†…æ ¸ä»¥centeræ–¹å¼æ˜¾ç¤ºï¼Œfirefoxå´ä»¥startæ–¹å¼æ˜¾ç¤º
     -webkit-box-align: $param;
     -moz-box-align: $param;
     box-align: $param;
@@ -165,7 +165,7 @@
 }
 
 /**
- * ¶ÑÕ»ÉìËõĞĞ old°æ±¾Ã»ÓĞ¸ÃÊôĞÔ£¬Ç°Ìá£ºflex-wrap:wrap;
+ * å †æ ˆä¼¸ç¼©è¡Œ oldç‰ˆæœ¬æ²¡æœ‰è¯¥å±æ€§ï¼Œå‰æï¼šflex-wrap:wrap;
  * @param flex-start | flex-end | center | space-between | space-around | stretch
  */
 @mixin flexAlignContenForHybird($param){
@@ -195,15 +195,15 @@
   align-content: $param;
 }
 /**
- * ÉìËõĞÔ Ç¿ÖÆÈı¸ö²ÎÊı£¬»òÕß1¸ö²ÎÊı£¬²»ÔÊĞíÁ½¸ö²ÎÊı ²»ÍÆ¼öÕâÖÖ·½Ê½
- * @param <number(flex-grow,default:0)> ,<number(flex-shrink,default:1)>,<number(flex-basis,default:auto)>
+ * ä¼¸ç¼©æ€§ å¼ºåˆ¶ä¸‰ä¸ªå‚æ•°ï¼Œæˆ–è€…1ä¸ªå‚æ•°ï¼Œä¸å…è®¸ä¸¤ä¸ªå‚æ•° ä¸æ¨èè¿™ç§æ–¹å¼
+ * @param <number(flex-grow,default:1)> ,<number(flex-shrink,default:1)>,<number(flex-basis,default:0)>
  */
 @mixin flex($grow,$shrink:1,$basis:auto){
   -webkit-box-flex: $grow;
   -moz-box-flex: $grow;
-  box-flex: $grow; //old ×¢Òâµã£ºÈç¹û¶¨¿íµÄºĞ×ÓÉùÃ÷Ä³¸ö·½ÏòµÄmarginÎªauto,ÄÇÃ´Ëü»áÕ¼¾İ100%µÄ¿Õ¼ä£¬¿Ó¡£
+  box-flex: $grow; //old æ³¨æ„ç‚¹ï¼šå¦‚æœå®šå®½çš„ç›’å­å£°æ˜æŸä¸ªæ–¹å‘çš„marginä¸ºauto,é‚£ä¹ˆå®ƒä¼šå æ®100%çš„ç©ºé—´ï¼Œå‘ã€‚
   @if($grow == none){
-    -ms-flex:none;//hybird,Ñ¹ËõÊôĞÔ²»ÄÜÎª¸ºÖµ
+    -ms-flex:none;//hybird,å‹ç¼©å±æ€§ä¸èƒ½ä¸ºè´Ÿå€¼
     -webkit-flex:none;
     flex:none;
   }@else{
@@ -215,21 +215,21 @@
 @mixin flexGrow($grow){
   -webkit-box-flex: $grow;
   -moz-box-flex: $grow;
-  box-flex: $grow; //old ×¢Òâmargin
-  -ms-flex:$grow; //ÎªÁË¼æÈİ£¬oldºÍhybird²»Ö§³Ö·ÖĞ´
+  box-flex: $grow; //old æ³¨æ„margin
+  -ms-flex:$grow; //ä¸ºäº†å…¼å®¹ï¼Œoldå’Œhybirdä¸æ”¯æŒåˆ†å†™
   -webkit-webkit-flex-grow: $grow;
   flex-grow: $grow;
 }
-@mixin flexShrink($shrink){ //Ö»ÓĞ×îĞÂ°æ²ÅÓĞ´ËÊôĞÔ
+@mixin flexShrink($shrink){ //åªæœ‰æœ€æ–°ç‰ˆæ‰æœ‰æ­¤å±æ€§
   -webkit-webkit-flex-grow: $shrink;
   flex-grow: $shrink;
 }
 
 /**
- * ÏÔÊ¾Ë³Ğò
+ * æ˜¾ç¤ºé¡ºåº
  * @param <integer>
  */
-@mixin Order($num){//Ä¬ÈÏÖµ1
+@mixin Order($num){//é»˜è®¤å€¼1
   -webkit-box-ordinal-group: $num;
   -moz-box-ordinal-group: $num;
   box-ordinal-group: $num; //old
